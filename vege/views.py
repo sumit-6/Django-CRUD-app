@@ -20,7 +20,7 @@ def add_recipe(request):
 def recipes(request):
     queryset = Recipe.objects.all()
     if request.GET.get("search"):
-        queryset = queryset.filter(receipe_name__icontains = request.GET.get('search'))
+        queryset = queryset.filter(recipe_name__icontains = request.GET.get('search'))
 
     context = {"recipes": queryset, 'page': 'recipes'}
     return render(request, 'recipes.html', context)
