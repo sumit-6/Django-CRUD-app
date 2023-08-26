@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +42,9 @@ INSTALLED_APPS = [
 ]
 
 EXTERNAL_APPS = [
-    'vege'
+    'vege',
+    'cloudinary',
+    'cloudinary_storage'
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
@@ -128,13 +131,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dk26fyzkl',
+    'API_KEY': '877711251812486',
+    'API_SECRET': '9O08V33q9Ahfgnhc9W_fRbCeFlc'
+}
 
-STATICFILES_DIR = os.path.join(BASE_DIR, "static")
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "public/static")
-MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
