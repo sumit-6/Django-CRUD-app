@@ -1,6 +1,20 @@
+#!/bin/bash
+
 echo "BUILD START"
-pip install --upgrade pip
-pip install --root-user-action=ignore requests
+
+# Create a virtual environment
+python3.9 -m venv venv
+
+# Activate the virtual environment
+source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Run collectstatic
 python3.9 manage.py collectstatic
+
+# Deactivate the virtual environment
+deactivate
+
 echo "BUILD END"
