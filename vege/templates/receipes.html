@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block start %}
+    <div class='container mt-5'>
+        <div class="mt-5">
+            <div class="mx-auto col-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Search Food</label>
+                        <input name="search" type="text" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                
+            </div>
+        </div>
+
+        <table class="table m-5">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Recipe Name</th>
+                <th scope="col">Recipe Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for recipe in receipes %}
+            
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{recipe.receipe_name}}</td>
+                <td>{{recipe.receipe_description}}</td>
+                <td><img src="/media/{{recipe.receipe_image}}" style="height: 100px"></td>
+                <td>
+                    <a class="btn btn-danger m-2" href="/delete-receipe/{{recipe.id}}/">Delete</a>
+                    <a class="btn btn-success" href="/update-receipe/{{recipe.id}}/">Update</a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+
+          <a href="/add-receipe/" class="btn btn-warning">Add Recipe</a>
+    </div>
+{% endblock %}
