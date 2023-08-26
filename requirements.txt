@@ -1,4 +1,3 @@
-virtualenv
 antiorm==1.2.1
 asgiref==3.7.2
 certifi==2023.7.22
