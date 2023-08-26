@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-k-^0$(ymdnzr^_xaf)35u6dy1ewbon-p)91at!($-!t_kqp*ps
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'recipeApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD' : '3iomd2DZttULlynC7MOL',
+        'HOST': 'containers-us-west-108.railway.app',
+        'PORT': '7629'
     }
 }
 
@@ -124,13 +128,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
-STATICFILES_DIR = {
-    os.path.join(BASE_DIR, "public/static")
-}
+STATICFILES_DIR = os.path.join(BASE_DIR, "static")
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "public/static")
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = '/media/'
 
 # Default primary key field type

@@ -22,14 +22,13 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('receipes/', receipes, name='receipes'),
+    path('', receipes, name='receipes'),
     path('delete-receipe/<id>/', delete_receipe, name='delete_receipe'),
     path('update-receipe/<id>/', update_receipe, name='update-receipe'),
     path('add-receipe/', add_recipe, name='add_recipe'),
     path('admin/', admin.site.urls),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
-urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

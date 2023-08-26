@@ -13,7 +13,7 @@ def add_recipe(request):
             receipe_description = receipe_description,
             receipe_image = receipe_image
         )
-        return redirect('/receipes/')
+        return redirect('/')
     context = {'page': 'add_recipe'}
     return render(request, 'add_recipe.html', context)
     
@@ -28,7 +28,7 @@ def receipes(request):
 def delete_receipe(request, id):
     queryset = Receipe.objects.get(id = id)
     queryset.delete()
-    return redirect('/receipes/')
+    return redirect('/')
 
 def update_receipe(request, id):
     queryset = Receipe.objects.get(id = id)
@@ -42,6 +42,6 @@ def update_receipe(request, id):
         if receipe_image:
             queryset.receipe_image = receipe_image
         queryset.save()
-        return redirect('/receipes/')
+        return redirect('/')
     context = {'receipe': queryset, 'page': 'update recipes'}
     return render(request, 'update_receipe.html', context)
