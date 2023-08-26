@@ -22,10 +22,10 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', receipes, name='receipes'),
-    path('delete-receipe/<id>/', delete_receipe, name='delete_receipe'),
-    path('update-receipe/<id>/', update_receipe, name='update-receipe'),
-    path('add-receipe/', add_recipe, name='add_recipe'),
+    path('', recipes, name='recipes'),
+    path('delete-recipe/<id>/', delete_recipe, name='delete_recipe'),
+    path('update-recipe/<id>/', update_recipe, name='update-recipe'),
+    path('add-recipe/', add_recipe, name='add_recipe'),
     path('admin/', admin.site.urls),
 ]
 

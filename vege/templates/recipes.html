@@ -25,27 +25,27 @@
               </tr>
             </thead>
             <tbody>
-            {% for recipe in receipes %}
+            {% for recipe in recipes %}
             
               <tr>
                 <th scope="row">{{forloop.counter}}</th>
-                <td>{{recipe.receipe_name}}</td>
-                <td>{{recipe.receipe_description}}</td>
+                <td>{{recipe.recipe_name}}</td>
+                <td>{{recipe.recipe_description}}</td>
                 <td>
-                  {% if recipe.receipe_image %}
-                    <img src="{{ recipe.receipe_image.url }}" style="height: 100px">
+                  {% if recipe.recipe_image %}
+                    <img src="{{ recipe.recipe_image.url }}" style="height: 100px">
                   {% endif %}
                 </td>
 
                 <td>
-                    <a class="btn btn-danger m-2" href="/delete-receipe/{{recipe.id}}/">Delete</a>
-                    <a class="btn btn-success" href="/update-receipe/{{recipe.id}}/">Update</a>
+                    <a class="btn btn-danger m-2" href="/delete-recipe/{{recipe.id}}/">Delete</a>
+                    <a class="btn btn-success" href="/update-recipe/{{recipe.id}}/">Update</a>
                 </td>
               </tr>
             {% endfor %}
             </tbody>
           </table>
 
-          <a href="/add-receipe/" class="btn btn-warning">Add Recipe</a>
+          <a href="/add-recipe/" class="btn btn-warning">Add Recipe</a>
     </div>
 {% endblock %}

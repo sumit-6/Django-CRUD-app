@@ -5,43 +5,43 @@ from .models import *
 def add_recipe(request):
     if request.method == "POST":
         data = request.POST
-        receipe_image = request.FILES.get('receipe_image')
-        receipe_name = data.get('receipe_name')
-        receipe_description = data.get('receipe_description')
-        Receipe.objects.create(
-            receipe_name = receipe_name,
-            receipe_description = receipe_description,
-            receipe_image = receipe_image
+        recipe_image = request.FILES.get('recipe_image')
+        recipe_name = data.get('recipe_name')
+        recipe_description = data.get('recipe_description')
+        Recipe.objects.create(
+            recipe_name = recipe_name,
+            recipe_description = recipe_description,
+            recipe_image = recipe_image
         )
         return redirect('/')
     context = {'page': 'add_recipe'}
     return render(request, 'add_recipe.html', context)
     
-def receipes(request):
-    queryset = Receipe.objects.all()
+def recipes(request):
+    queryset = Recipe.objects.all()
     if request.GET.get("search"):
         queryset = queryset.filter(receipe_name__icontains = request.GET.get('search'))
 
-    context = {"receipes": queryset, 'page': 'recipes'}
-    return render(request, 'receipes.html', context)
+    context = {"recipes": queryset, 'page': 'recipes'}
+    return render(request, 'recipes.html', context)
 
-def delete_receipe(request, id):
-    queryset = Receipe.objects.get(id = id)
+def delete_recipe(request, id):
+    queryset = Recipe.objects.get(id = id)
     queryset.delete()
     return redirect('/')
 
-def update_receipe(request, id):
-    queryset = Receipe.objects.get(id = id)
+def update_recipe(request, id):
+    queryset = Recipe.objects.get(id = id)
     if request.method == "POST":
         data = request.POST
-        receipe_image = request.FILES.get('receipe_image')
-        receipe_name = data.get('receipe_name')
-        receipe_description = data.get('receipe_description')
-        queryset.receipe_name = receipe_name
-        queryset.receipe_description = receipe_description
-        if receipe_image:
-            queryset.receipe_image = receipe_image
+        recipe_image = request.FILES.get('recipe_image')
+        recipe_name = data.get('recipe_name')
+        recipe_description = data.get('receipe_description')
+        queryset.recipe_name = recipe_name
+        queryset.recipe_description = recipe_description
+        if recipe_image:
+            queryset.recipe_image = recipe_image
         queryset.save()
         return redirect('/')
-    context = {'receipe': queryset, 'page': 'update recipes'}
-    return render(request, 'update_receipe.html', context)
+    context = {'recipe': queryset, 'page': 'update recipes'}
+    return render(request, 'update_recipe.html', context)
