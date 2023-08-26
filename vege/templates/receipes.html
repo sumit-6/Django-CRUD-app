@@ -31,7 +31,8 @@
                 <th scope="row">{{forloop.counter}}</th>
                 <td>{{recipe.receipe_name}}</td>
                 <td>{{recipe.receipe_description}}</td>
-                <td><img src="/media/{{recipe.receipe_image}}" style="height: 100px"></td>
+                <td><img src="{{ recipe.receipe_image.url }}" style="height: 100px"></td>
+
                 <td>
                     <a class="btn btn-danger m-2" href="/delete-receipe/{{recipe.id}}/">Delete</a>
                     <a class="btn btn-success" href="/update-receipe/{{recipe.id}}/">Update</a>
